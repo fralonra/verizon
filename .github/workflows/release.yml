@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+*']
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: cargo build --release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./verizon
+  
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build ARM
+        run: cargo build --release --target=aarch64-apple-darwin
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./verizon
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: cargo build --release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./verizon.exe

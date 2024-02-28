@@ -1,0 +1,44 @@
+import { Button, HorizontalBox, ListView, VerticalBox } from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+    in property <[string]> release-list: [];
+
+    callback refresh_button_clicked();
+    callback update_button_clicked(int);
+    callback update_latest_button_clicked();
+
+    VerticalBox {
+        Text { text: "Version: 0.1.0"; }
+
+        if release-list.length == 0 : Text { text: "No release found"; }
+        if release-list.length > 0 : ListView {
+            for release[index] in release-list : HorizontalBox {
+                Text { text: release; }
+
+                Button {
+                    text: "Update";
+                    enabled: release-list.length > 0;
+                    clicked => {
+                        root.update_button_clicked(index);
+                    }
+                }
+            }
+        }
+
+
+        Button {
+            text: "Refresh";
+            clicked => {
+                root.refresh_button_clicked();
+            }
+        }
+
+        Button {
+            text: "Update";
+            enabled: release-list.length > 0;
+            clicked => {
+                root.update_latest_button_clicked();
+            }
+        }
+    }
+}
