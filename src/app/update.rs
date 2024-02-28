@@ -29,7 +29,7 @@ pub fn update_to_latest_release() -> Result<()> {
 }
 
 pub fn update_to_release(release: &Release) -> Result<()> {
-    build_update(Some(&release.version))?.update()?;
+    build_update(Some(&release.name))?.update()?;
 
     Ok(())
 }

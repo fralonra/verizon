@@ -60,7 +60,7 @@ pub fn run(app: &App) -> Result<()> {
             if let Some(release) = &release_list.iter().nth(index as usize) {
                 match update_to_release(release) {
                     Ok(()) => {
-                        log::info!("Updated to release: {}", release.version);
+                        log::info!("Updated to release: {}", release.name);
                     }
                     Err(err) => {
                         log::error!("Failed to update release: {}", err);
@@ -89,7 +89,7 @@ pub fn run(app: &App) -> Result<()> {
         let release_list = Rc::new(VecModel::<SharedString>::from(
             release_list
                 .iter()
-                .map(|release| release.version.as_str().into())
+                .map(|release| release.name.as_str().into())
                 .collect::<Vec<SharedString>>(),
         ));
 
