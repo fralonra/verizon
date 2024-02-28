@@ -15,11 +15,11 @@ jobs:
       - name: Build
         run: cargo build --release
       - name: Rename
-        run: mv ./target/release/verizon ./verizon-linux
+        run: mv ./target/release/verizon ./verizon-x86_64-unknown-linux-gnu
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./verizon-linux
+          files: ./verizon-x86_64-unknown-linux-gnu
   
   macos:
     runs-on: macos-latest
@@ -31,11 +31,11 @@ jobs:
       - name: Build
         run: cargo build --release
       - name: Rename
-        run: mv ./target/release/verizon ./verizon-macos
+        run: mv ./target/release/verizon ./verizon-x86_64-apple-darwin
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./verizon-macos
+          files: ./verizon-x86_64-apple-darwin
 
   windows:
     runs-on: windows-latest
@@ -49,7 +49,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build
         run: cargo build --release
+      - name: Rename
+        run: mv ./target/release/verizon.exe ./verizon-x86_64-pc-windows-msvc.exe
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./target/release/verizon.exe
+          files: ./verizon-x86_64-pc-windows-msvc.exe
