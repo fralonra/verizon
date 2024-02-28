@@ -17,20 +17,18 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./verizon
+          files: ./target/release/verizon
   
   macos:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install ARM target
-        run: rustup update && rustup target add aarch64-apple-darwin
-      - name: Build ARM
-        run: cargo build --release --target=aarch64-apple-darwin
+      - name: Build
+        run: cargo build --release
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./osx/verizon
+          files: ./target/release/verizon
 
   windows:
     runs-on: windows-latest
@@ -47,4 +45,4 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./verizon.exe
+          files: ./target/release/verizon.exe
