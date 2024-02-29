@@ -41,7 +41,8 @@ fn build_update(version_tag: Option<&str>) -> Result<Box<dyn ReleaseUpdate>> {
         .repo_owner(REPO_OWNER)
         .repo_name(REPO_NAME)
         .bin_name(BIN_NAME)
-        .current_version(cargo_crate_version!());
+        .current_version(cargo_crate_version!())
+        .no_confirm(true);
 
     if let Some(version_tag) = version_tag {
         builder.target_version_tag(version_tag);
