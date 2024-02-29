@@ -8,7 +8,7 @@ export component MainWindow inherits Window {
     callback update_latest_button_clicked();
 
     VerticalBox {
-        Text { text: "Version: 0.1.0"; }
+        Text { text: "Version: {{version}}"; }
 
         if release-list.length == 0 : Text { text: "No release found"; }
         if release-list.length > 0 : ListView {
