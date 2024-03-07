@@ -16,9 +16,8 @@ jobs:
         run: cargo build --release
       - name: Gzip
         run: |
-          mkdir verizon
-          mv ./target/release/verizon verizon/
-          tar -zcvf ./verizon-x86_64-unknown-linux-gnu.tar.gz verizon/
+          mv ./target/release/verizon .
+          tar -zcvf ./verizon-x86_64-unknown-linux-gnu.tar.gz verizon
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -35,9 +34,8 @@ jobs:
         run: cargo build --release
       - name: Gzip
         run: |
-          mkdir verizon
-          mv ./target/release/verizon verizon/
-          tar -zcvf ./verizon-x86_64-apple-darwin.tar.gz verizon/
+          mv ./target/release/verizon .
+          tar -zcvf ./verizon-x86_64-apple-darwin.tar.gz verizon
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -57,9 +55,8 @@ jobs:
         run: cargo build --release
       - name: Gzip
         run: |
-          mkdir verizon
-          mv ./target/release/verizon.exe verizon/
-          tar -zcvf ./verizon-x86_64-pc-windows-msvc.tar.gz verizon/
+          mv ./target/release/verizon.exe .
+          tar -zcvf ./verizon-x86_64-pc-windows-msvc.tar.gz verizon
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
