@@ -7,7 +7,10 @@ edition = "2021"
 anyhow = "1.0.80"
 env_logger = "0.11.2"
 log = "0.4.20"
-self_update = "0.39.0"
+self_update = { version = "0.39.0", features = [
+    "archive-tar",
+    "compression-flate2",
+] }
 slint = "1.4.1"
 
 [build-dependencies]
