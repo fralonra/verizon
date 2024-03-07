@@ -6,13 +6,7 @@ use self_update::{
 
 const REPO_OWNER: &'static str = "fralonra";
 const REPO_NAME: &'static str = "verizon";
-
-#[cfg(target_os = "linux")]
-const BIN_NAME: &'static str = "verizon-linux";
-#[cfg(target_os = "macos")]
-const BIN_NAME: &'static str = "verizon-macos";
-#[cfg(target_os = "windows")]
-const BIN_NAME: &'static str = "verizon.exe";
+const BIN_NAME: &'static str = "verizon";
 
 pub fn check_releases() -> Result<Vec<Release>> {
     Ok(self_update::backends::github::ReleaseList::configure()
@@ -41,7 +35,6 @@ fn build_update(version_tag: Option<&str>) -> Result<Box<dyn ReleaseUpdate>> {
         .repo_owner(REPO_OWNER)
         .repo_name(REPO_NAME)
         .bin_name(BIN_NAME)
-        .bin_path_in_archive(BIN_NAME)
         .current_version(cargo_crate_version!())
         .no_confirm(true);
 
