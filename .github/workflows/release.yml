@@ -59,7 +59,7 @@ jobs:
         run: |
           mkdir verizon
           mv ./target/release/verizon.exe verizon/
-          tar -zcvf ./verizon-verizon-x86_64-pc-windows-msvc.tar.gz verizon/
+          tar -zcvf ./verizon-x86_64-pc-windows-msvc.tar.gz verizon/
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
