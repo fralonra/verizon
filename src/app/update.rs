@@ -41,6 +41,7 @@ fn build_update(version_tag: Option<&str>) -> Result<Box<dyn ReleaseUpdate>> {
         .repo_owner(REPO_OWNER)
         .repo_name(REPO_NAME)
         .bin_name(BIN_NAME)
+        .bin_path_in_archive(BIN_NAME)
         .current_version(cargo_crate_version!())
         .no_confirm(true);
 
